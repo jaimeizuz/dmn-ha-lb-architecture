@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20230324/MODEL/" expressionLanguage="https://www.omg.org/spec/DMN/20230324/FEEL/" namespace="https://kie.org/dmn/_21C055B8-0DE3-423D-A292-7AE86544AD8C" id="_8561FA6B-0884-4ED4-B4CF-CDC33E4B81CF" name="greeting" xmlns:dmndi="https://www.omg.org/spec/DMN/20230324/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" xmlns:kie="https://kie.org/dmn/extensions/1.0">
+  <inputData name="Name" id="_226B7E76-88F4-4FCE-B078-84CB4C4D3869">
+    <variable name="Name" id="_D6AC5F3F-A5E0-48A2-A826-C55C9048647E" typeRef="string" />
+  </inputData>
+  <decision name="Greeting" id="_AE48695B-364E-4CBA-8113-E018521BED6A">
+    <variable id="_49C5121C-7499-4781-AA77-8882C15D09E0" typeRef="string" name="Greeting" />
+    <informationRequirement id="_E01135DF-F522-4511-A070-39876797BB70">
+      <requiredInput href="#_226B7E76-88F4-4FCE-B078-84CB4C4D3869" />
+    </informationRequirement>
+    <literalExpression id="_DC9A0002-C74E-4197-A5C5-9C6897278DF4" typeRef="string" label="Greeting">
+      <text>&quot;Hello &quot; + Name</text>
+    </literalExpression>
+  </decision>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram id="_DD480945-3249-437E-9FE5-1C1856A7FFF8" name="Default DRD" useAlternativeInputDataShape="false">
+      <di:extension>
+        <kie:ComponentsWidthsExtension>
+          <kie:ComponentWidths dmnElementRef="_DC9A0002-C74E-4197-A5C5-9C6897278DF4">
+            <kie:width>190</kie:width>
+          </kie:ComponentWidths>
+        </kie:ComponentsWidthsExtension>
+      </di:extension>
+      <dmndi:DMNShape id="_3B708A8E-7D3C-4E27-B9F0-F1C7E85B7A25" dmnElementRef="_226B7E76-88F4-4FCE-B078-84CB4C4D3869" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="400" y="220" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="_03AA8885-F80A-4F5F-B300-C6FDF9709714" dmnElementRef="_AE48695B-364E-4CBA-8113-E018521BED6A" isCollapsed="false" isListedInputData="false">
+        <dc:Bounds x="400" y="20" width="160" height="80" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="_2D63C409-246E-4DA7-99E6-192C3B164D2B-AUTO-TARGET" dmnElementRef="_E01135DF-F522-4511-A070-39876797BB70" sourceElement="_3B708A8E-7D3C-4E27-B9F0-F1C7E85B7A25" targetElement="_03AA8885-F80A-4F5F-B300-C6FDF9709714">
+        <di:waypoint x="480" y="260" />
+        <di:waypoint x="480" y="60" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
