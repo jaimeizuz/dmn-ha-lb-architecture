@@ -42,3 +42,10 @@ curl --location 'http://localhost:4000/loan-prequalification' \
     }
 }'
 ```
+
+### Build the DMN projects
+- Start app in dev mode: ```mvn clean quarkus:dev```
+- Build using JVM: ```mvn clean package```
+- Build using JVM and build Docker image (requires Docker): ```mvn -Pcontainer clean package```
+- Build using native image: ```mvn -Pnative clean package```
+- Build using native image and build Docker image (requires Docker): ```mvn -Pcontainer -Pnative clean package```

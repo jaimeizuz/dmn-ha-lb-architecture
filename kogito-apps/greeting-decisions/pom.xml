@@ -5,11 +5,10 @@
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.jaime.kogito.tests</groupId>
-  <artifactId>kogito-traffic-violation-decisions</artifactId>
+  <artifactId>greeting-decisions</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
     <!-- <quarkus.package.type>uber-jar</quarkus.package.type> -->
-    <compiler-plugin.version>3.10.1</compiler-plugin.version>
     <maven.compiler.release>17</maven.compiler.release>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -19,10 +18,7 @@
     <kogito.bom.group-id>org.kie.kogito</kogito.bom.group-id>
     <kogito.bom.artifact-id>kogito-bom</kogito.bom.artifact-id>
     <version.org.kie.kogito>999-SNAPSHOT</version.org.kie.kogito>
-    <micrometer.version>3.2.4</micrometer.version>
-    <dependency-plugin.version>3.6.1</dependency-plugin.version>
     <enable.runtime.typecheck>true</enable.runtime.typecheck>
-    <surefire-plugin.version>3.0.0-M7</surefire-plugin.version>
   </properties>
   <dependencyManagement>
     <dependencies>
@@ -56,12 +52,6 @@
       <artifactId>drools-quarkus-decisions</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.kie</groupId>
-      <artifactId>kie-dmn-test-resources</artifactId>
-      <scope>test</scope>
-      <classifier>tests</classifier>
-    </dependency>
-    <dependency>
       <groupId>org.kie.kogito</groupId>
       <artifactId>kogito-scenario-simulation</artifactId>
       <scope>test</scope>
@@ -70,11 +60,11 @@
     <!-- REST -->
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive</artifactId>
+      <artifactId>quarkus-rest</artifactId>
     </dependency>
     <dependency>
       <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive-jackson</artifactId>
+      <artifactId>quarkus-rest-jackson</artifactId>
     </dependency>
 
     <!-- CDI -->
@@ -119,6 +109,40 @@
         </dependency>
       </dependencies>
     </profile>
+    <profile>
+      <id>native</id>
+      <properties>
+        <quarkus.native.enabled>true</quarkus.native.enabled>
+        <quarkus.package.type>native</quarkus.package.type>
+        <quarkus.native.container-build>true</quarkus.native.container-build>
+      </properties>
+      <!--
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.graalvm.buildtools</groupId>
+            <artifactId>native-maven-plugin</artifactId>
+            <version>0.10.6</version>
+            <extensions>true</extensions>
+            <executions>
+              <execution>
+                <id>build-native</id>
+                <goals>
+                  <goal>build</goal>
+                </goals>
+                <phase>package</phase>
+              </execution>
+            </executions>
+            <configuration>
+              <buildArgs>
+                <buildArg>initialize-at-run-time=org.apache.hc.client5.http.impl.auth.NTLMEngineImpl</buildArg>
+              </buildArgs>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+      -->
+    </profile>
   </profiles>
 
   
@@ -139,15 +163,6 @@
             </goals>
           </execution>
         </executions>
-      </plugin>
-      <plugin>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>${compiler-plugin.version}</version>
-        <configuration>
-          <compilerArgs>
-            <arg>-parameters</arg>
-          </compilerArgs>
-        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -4,14 +4,15 @@ services:
     deploy:
       resources:
         limits:
-          cpus: '1'
+          cpus: '0.01'
           memory: 64M
         reservations:
           memory: 64M
     ports:
     - 4000:4000
   loan-prequalification-decisions:
-    image: jizuzquiza/loan-prequalification-decisions:1.0.0
+    image: jizuzquiza/loan-prequalification-decisions:1.0.0-native
+    #image: jizuzquiza/loan-prequalification-decisions:1.0.0
     deploy:
       resources:
         limits:
@@ -22,7 +23,8 @@ services:
     ports:
     - 9001:8080
   greeting-decisions:
-    image: jizuzquiza/greeting-decisions:1.0.0
+    image: jizuzquiza/greeting-decisions:1.0.0-native
+    #image: jizuzquiza/greeting-decisions:1.0.0
     deploy:
       resources:
         limits:
